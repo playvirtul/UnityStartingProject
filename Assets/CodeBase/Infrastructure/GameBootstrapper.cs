@@ -8,11 +8,11 @@ namespace CodeBase.Infrastructure
     {
         private Game _game;
 
-        [SerializeField] private LoadingCurtain _curtain;
+        [SerializeField] private LoadingCurtain _curtainPrefab;
 
         private void Awake()
         {
-            _game = new Game(this, _curtain);
+            _game = new Game(this, Instantiate(_curtainPrefab));
             _game.StateMachine.Enter<BootstrapState>();
 
             DontDestroyOnLoad(this);

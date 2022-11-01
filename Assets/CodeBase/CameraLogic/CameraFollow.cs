@@ -11,13 +11,15 @@ namespace CodeBase.CameraLogic
         [SerializeField] private float _distance;
 
         [SerializeField] private float _rotationAngleX;
+        
+        [SerializeField] private float _rotationAngleY;
 
         private void LateUpdate()
         {
             if (_following == null)
                 return;
 
-            var rotation = Quaternion.Euler(_rotationAngleX, 0, 0);
+            var rotation = Quaternion.Euler(_rotationAngleX, _rotationAngleY, 0);
             var position = rotation * new Vector3(0, 0, -_distance) + FollowingPointPosition();
 
             transform.rotation = rotation;
